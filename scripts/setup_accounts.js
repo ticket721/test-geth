@@ -12,12 +12,13 @@ if (process.env.MNEMONIC && process.env.DATADIR && process.env.NET_ID) {
  {
     "config": {
         "chainId": ${process.env.NET_ID},
-        "homesteadBlock": 0,
-        "byzantiumBlock": 0,
-        "eip150Block": 0,
-        "eip155Block": 0,
+        "homesteadBlock": 1,
+        "eip150Block": 2,
         "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-        "eip158Block": 0
+        "eip155Block": 3,
+        "eip158Block": 3,
+        "byzantiumBlock": 4,
+        "constantinopleBlock": 5
     },
     "nonce": "0x0000000000000042",
     "timestamp": "0x0",

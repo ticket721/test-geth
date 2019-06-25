@@ -13,9 +13,13 @@ COPY ./scripts /scripts
 
 COPY --from=builder /go-ethereum/build/bin/geth /usr/local/bin/
 
-RUN apk add --update nodejs nodejs-npm bash git make && rm -rf /var/cache/apk/*
-RUN cd /scripts && npm install
+RUN apk add --update nodejs nodejs-npm bash haveged openrc --no-cache \
+&& rm -rf /var/cache/apk/* \
+&& rc-update add haveged
 
+RUN haveged -w 1024
+
+RUN cd /scripts && npm install
 
 ENTRYPOINT ["/scripts/tgeth.sh"]
 CMD []
